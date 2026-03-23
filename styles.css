@@ -483,6 +483,7 @@ button {
     min-height: 45px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -667,14 +668,15 @@ button {
     position: relative;
     max-width: 900px;
     margin: 0 auto 40px;
-    padding: 0 80px;
-    overflow: hidden;
+    padding: 0 70px;
+    overflow: visible;
 }
 
 .reviews-track {
     display: flex;
     gap: 30px;
     transition: transform 0.5s ease;
+    overflow: hidden;
 }
 
 .review-card {
@@ -728,6 +730,7 @@ button {
     transition: var(--transition);
     z-index: 10;
     border: 2px solid var(--color-pink);
+    flex-shrink: 0;
 }
 
 .slider-btn:hover {
@@ -741,11 +744,11 @@ button {
 }
 
 .slider-btn.prev {
-    left: 0;
+    left: 5px;
 }
 
 .slider-btn.next {
-    right: 0;
+    right: 5px;
 }
 
 .slider-btn svg {
@@ -1179,6 +1182,64 @@ button {
     }
 }
 
+/* EXTRA SMALL DEVICES - 320px */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 12px;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+    }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .hero-subtitle {
+        font-size: 15px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+    
+    .btn-large {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    
+    .service-card,
+    .master-card,
+    .promo-card {
+        padding: 18px 12px;
+    }
+    
+    .advantage-card {
+        padding: 25px 15px;
+    }
+    
+    .review-card {
+        padding: 20px 15px;
+    }
+    
+    .booking-form-wrapper {
+        padding: 20px 12px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+    }
+}
+
 @media (max-width: 1024px) {
     .nav {
         gap: 20px;
@@ -1420,7 +1481,7 @@ button {
     
     /* REVIEWS MOBILE */
     .reviews-slider {
-        padding: 0 50px;
+        padding: 0 60px;
     }
     
     .slider-btn {
@@ -1434,11 +1495,11 @@ button {
     }
     
     .slider-btn.prev {
-        left: 5px;
+        left: 2px;
     }
     
     .slider-btn.next {
-        right: 5px;
+        right: 2px;
     }
     
     .review-card {
@@ -1675,7 +1736,7 @@ button {
     
     /* REVIEWS EXTRA SMALL */
     .reviews-slider {
-        padding: 0 45px;
+        padding: 0 55px;
     }
     
     .slider-btn {
@@ -1686,6 +1747,14 @@ button {
     .slider-btn svg {
         width: 20px;
         height: 20px;
+    }
+    
+    .slider-btn.prev {
+        left: 0;
+    }
+    
+    .slider-btn.next {
+        right: 0;
     }
     
     .review-card {
@@ -1809,37 +1878,49 @@ button {
 @media (hover: none) and (pointer: coarse) {
     /* Better tap targets for touch devices */
     .btn {
-        min-height: 44px;
-        min-width: 44px;
+        min-height: 48px;
+        padding: 14px 26px;
     }
     
     .nav-link {
-        min-height: 44px;
+        min-height: 48px;
         display: flex;
         align-items: center;
+        padding: 12px 0;
     }
     
     .filter-btn,
     .tab-btn {
-        min-height: 44px;
+        min-height: 48px;
+        padding: 14px 26px;
     }
     
     /* Remove hover effects on touch devices */
     .btn:hover,
     .service-card:hover,
     .master-card:hover,
-    .portfolio-item:hover {
+    .portfolio-item:hover,
+    .advantage-card:hover {
         transform: none;
+        box-shadow: inherit;
     }
     
     /* Active states for touch */
     .btn:active {
-        transform: scale(0.98);
+        transform: scale(0.97);
+        opacity: 0.9;
     }
     
     .service-card:active,
-    .master-card:active {
+    .master-card:active,
+    .advantage-card:active {
         transform: scale(0.98);
+    }
+    
+    /* Disable hover overlays on touch */
+    .portfolio-overlay {
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
     }
 }
 
@@ -1866,6 +1947,7 @@ html {
         font-size: 16px !important; /* Prevents zoom on iOS */
         -webkit-appearance: none;
         appearance: none;
+        border-radius: 8px;
     }
     
     select {
@@ -1873,6 +1955,23 @@ html {
         background-repeat: no-repeat;
         background-position: right 12px center;
         padding-right: 35px;
+    }
+    
+    /* Better tap targets */
+    .btn,
+    .nav-link,
+    .filter-btn,
+    .tab-btn,
+    a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-link {
+        display: flex;
     }
 }
 
@@ -1972,6 +2071,31 @@ textarea:focus {
 
 .skip-to-content:focus {
     top: 0;
+}
+
+/* LOADING OPTIMIZATION */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* PERFORMANCE OPTIMIZATION */
+.service-image,
+.master-image,
+.portfolio-image {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* SMOOTH SCROLLING */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 /* LOADING STATE */

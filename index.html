@@ -16,23 +16,42 @@
     <meta name="theme-color" content="#FFF8F0">
     <meta name="msapplication-TileColor" content="#FFF8F0">
     
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kittlyclaw.ru/">
+    <meta property="og:title" content="KittlyClaw - Студия маникюра и визажа премиум-класса">
+    <meta property="og:description" content="Профессиональные мастера, стерильные инструменты, премиум-материалы. Запишитесь онлайн!">
+    <meta property="og:image" content="https://kittlyclaw.ru/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kittlyclaw.ru/">
+    <meta property="twitter:title" content="KittlyClaw - Студия маникюра и визажа премиум-класса">
+    <meta property="twitter:description" content="Профессиональные мастера, стерильные инструменты, премиум-материалы. Запишитесь онлайн!">
+    <meta property="twitter:image" content="https://kittlyclaw.ru/og-image.jpg">
+    
+    <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript" defer></script>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/BeautySalon">
+    <!-- Skip to content for accessibility -->
+    <a href="#home" class="skip-to-content">Перейти к содержимому</a>
+    
     <!-- HEADER -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
-                <a href="#home" class="logo">
-                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                <a href="#home" class="logo" itemprop="url">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
                         <path d="M20 5 L25 15 L35 15 L27 22 L30 32 L20 26 L10 32 L13 22 L5 15 L15 15 Z" fill="#D4AF37"/>
                         <circle cx="20" cy="20" r="3" fill="#F5E6E8"/>
                     </svg>
-                    <span class="logo-text">KittlyClaw</span>
+                    <span class="logo-text" itemprop="name">KittlyClaw</span>
                 </a>
                 <nav class="nav" id="nav">
                     <a href="#home" class="nav-link active">Главная</a>
@@ -44,7 +63,7 @@
                 </nav>
                 <div class="header-actions">
                     <div class="contacts-mini">
-                        <a href="tel:+79991234567" class="phone">+7 (999) 123-45-67</a>
+                        <a href="tel:+79991234567" class="phone" itemprop="telephone">+7 (999) 123-45-67</a>
                         <div class="messengers">
                             <a href="#" class="messenger-icon whatsapp" aria-label="WhatsApp">
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -181,7 +200,7 @@
                 <div class="tab-content active" id="manicure">
                     <div class="services-grid">
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/1.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/1.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Классический маникюр</h3>
                                 <p class="service-description">Обработка кутикулы, придание формы, покрытие</p>
@@ -192,7 +211,7 @@
                             </div>
                         </div>
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/2.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/2.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Гель-лак</h3>
                                 <p class="service-description">Стойкое покрытие до 3 недель</p>
@@ -203,7 +222,7 @@
                             </div>
                         </div>
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/3.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/3.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Наращивание ногтей</h3>
                                 <p class="service-description">Гелевое или акриловое наращивание</p>
@@ -214,7 +233,7 @@
                             </div>
                         </div>
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/4.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/4.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Дизайн ногтей</h3>
                                 <p class="service-description">Художественная роспись, стразы, слайдеры</p>
@@ -225,7 +244,7 @@
                             </div>
                         </div>
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/5.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/5.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">СПА-уход для рук</h3>
                                 <p class="service-description">Пилинг, маска, массаж рук</p>
@@ -240,7 +259,7 @@
                 <div class="tab-content" id="makeup">
                     <div class="services-grid">
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/6.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/6.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Дневной макияж</h3>
                                 <p class="service-description">Естественный образ на каждый день</p>
@@ -251,7 +270,7 @@
                             </div>
                         </div>
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/7.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/7.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Вечерний макияж</h3>
                                 <p class="service-description">Яркий образ для особых случаев</p>
@@ -262,7 +281,7 @@
                             </div>
                         </div>
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/8.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/8.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Свадебный образ</h3>
                                 <p class="service-description">Макияж + причёска для невесты</p>
@@ -273,7 +292,7 @@
                             </div>
                         </div>
                         <div class="service-card">
-                            <div class="service-image" style="background-image: url('asstes/uslugi/9.jpg');"></div>
+                            <div class="service-image" style="background-image: url('assets/uslugi/9.jpg');"></div>
                             <div class="service-info">
                                 <h3 class="service-name">Обучение визажу</h3>
                                 <p class="service-description">Индивидуальные уроки макияжа</p>
@@ -295,7 +314,7 @@
             <h2 class="section-title">Наши мастера</h2>
             <div class="masters-grid">
                 <div class="master-card">
-                    <div class="master-image" style="background-image: url('asstes/masters/1.jpg');"></div>
+                    <div class="master-image" style="background-image: url('assets/masters/1.jpg');"></div>
                     <div class="master-info">
                         <h3 class="master-name">Анна Петрова</h3>
                         <p class="master-specialty">Мастер маникюра</p>
@@ -312,7 +331,7 @@
                     </div>
                 </div>
                 <div class="master-card">
-                    <div class="master-image" style="background-image: url('asstes/masters/2.jpg');"></div>
+                    <div class="master-image" style="background-image: url('assets/masters/2.jpg');"></div>
                     <div class="master-info">
                         <h3 class="master-name">Мария Иванова</h3>
                         <p class="master-specialty">Визажист</p>
@@ -329,7 +348,7 @@
                     </div>
                 </div>
                 <div class="master-card">
-                    <div class="master-image" style="background-image: url('asstes/masters/3.jpg');"></div>
+                    <div class="master-image" style="background-image: url('assets/masters/3.jpg');"></div>
                     <div class="master-info">
                         <h3 class="master-name">Елена Смирнова</h3>
                         <p class="master-specialty">Мастер маникюра и дизайна</p>
@@ -346,7 +365,7 @@
                     </div>
                 </div>
                 <div class="master-card">
-                    <div class="master-image" style="background-image: url('asstes/masters/4.jpg');"></div>
+                    <div class="master-image" style="background-image: url('assets/masters/4.jpg');"></div>
                     <div class="master-info">
                         <h3 class="master-name">Ольга Козлова</h3>
                         <p class="master-specialty">Визажист-стилист</p>
@@ -378,63 +397,63 @@
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-category="manicure">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/1.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/1.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Нежный маникюр</h3>
                         <p>Гель-лак + дизайн</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="makeup">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/6.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/6.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Вечерний макияж</h3>
                         <p>Smoky eyes</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="manicure">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/2.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/2.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Французский маникюр</h3>
                         <p>Классика</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="wedding">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/8.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/8.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Свадебный образ</h3>
                         <p>Макияж + причёска</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="manicure">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/4.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/4.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Яркий дизайн</h3>
                         <p>Стразы + роспись</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="makeup">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/6.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/10.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Дневной макияж</h3>
                         <p>Естественный образ</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="manicure">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/3.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/3.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Омбре</h3>
                         <p>Градиент</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="wedding">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/8.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/11.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Образ невесты</h3>
                         <p>Нежный макияж</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="makeup">
-                    <div class="portfolio-image" style="background-image: url('asstes/uslugi/7.jpg');"></div>
+                    <div class="portfolio-image" style="background-image: url('assets/uslugi/7.jpg');"></div>
                     <div class="portfolio-overlay">
                         <h3>Яркие губы</h3>
                         <p>Вечерний образ</p>
@@ -673,7 +692,10 @@
                         </div>
                         <div class="contact-text">
                             <h3>Адрес</h3>
-                            <p>г. Москва, ул. Примерная, д. 10</p>
+                            <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                                <span itemprop="addressLocality">г. Москва</span>, 
+                                <span itemprop="streetAddress">ул. Примерная, д. 10</span>
+                            </p>
                             <p>м. Центральная (5 мин пешком)</p>
                         </div>
                     </div>
@@ -697,7 +719,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>Режим работы</h3>
-                            <p>Понедельник - Воскресенье</p>
+                            <p itemprop="openingHours" content="Mo-Su 10:00-22:00">Понедельник - Воскресенье</p>
                             <p>10:00 - 22:00</p>
                         </div>
                     </div>
@@ -710,7 +732,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>Email</h3>
-                            <p><a href="mailto:info@kittlyclaw.ru">info@kittlyclaw.ru</a></p>
+                            <p><a href="mailto:info@kittlyclaw.ru" itemprop="email">info@kittlyclaw.ru</a></p>
                         </div>
                     </div>
                     <div class="social-links">
@@ -736,18 +758,21 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" itemscope itemtype="https://schema.org/Organization">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <a href="#home" class="logo">
-                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <a href="#home" class="logo" itemprop="url">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
                             <path d="M20 5 L25 15 L35 15 L27 22 L30 32 L20 26 L10 32 L13 22 L5 15 L15 15 Z" fill="#D4AF37"/>
                             <circle cx="20" cy="20" r="3" fill="#F5E6E8"/>
                         </svg>
-                        <span class="logo-text">KittlyClaw</span>
+                        <span class="logo-text" itemprop="name">KittlyClaw</span>
                     </a>
-                    <p class="footer-description">Студия маникюра и визажа премиум-класса. Ваша красота — наша профессия.</p>
+                    <p class="footer-description" itemprop="description">Студия маникюра и визажа премиум-класса. Ваша красота — наша профессия.</p>
+                    <meta itemprop="address" content="г. Москва, ул. Примерная, д. 10">
+                    <meta itemprop="telephone" content="+79991234567">
+                    <meta itemprop="email" content="info@kittlyclaw.ru">
                 </div>
                 <div class="footer-col">
                     <h4>Навигация</h4>

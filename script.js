@@ -38,40 +38,11 @@ navLinks.forEach(link => {
 
 // HEADER SCROLL
 const header = document.getElementById('header');
+const sections = document.querySelectorAll('section[id]');
+const scrollTopBtn = document.getElementById('scrollTopBtn');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        header.style.padding = '10px 0';
-        header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.1)';
-    } else {
-        header.style.padding = '20px 0';
-        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// ACTIVE NAV LINK ON SCROLL
-const sections = document.querySelectorAll('section[id]');
-
-window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset;
-    
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
-        } else {
-            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('active');
-        }
-    });
-});
+// Remove old scroll handlers - now using optimized version below
 
 // SERVICES TABS
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -208,6 +179,26 @@ setInterval(updateTimer, 1000);
 // BOOKING FORM
 const bookingForm = document.getElementById('bookingForm');
 
+// Phone number formatting
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+    phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+            if (value[0] === '8') value = '7' + value.slice(1);
+            if (value[0] !== '7') value = '7' + value;
+            
+            let formatted = '+7';
+            if (value.length > 1) formatted += ' (' + value.slice(1, 4);
+            if (value.length >= 5) formatted += ') ' + value.slice(4, 7);
+            if (value.length >= 8) formatted += '-' + value.slice(7, 9);
+            if (value.length >= 10) formatted += '-' + value.slice(9, 11);
+            
+            e.target.value = formatted;
+        }
+    });
+}
+
 // Set minimum date to today
 const dateInput = document.getElementById('date');
 if (dateInput) {
@@ -228,9 +219,9 @@ bookingForm.addEventListener('submit', (e) => {
         master: document.getElementById('master').value,
         date: document.getElementById('date').value,
         time: document.getElementById('time').value,
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        comment: document.getElementById('comment').value
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.replace(/\D/g, ''),
+        comment: document.getElementById('comment').value.trim()
     };
     
     // Validate form
@@ -239,9 +230,23 @@ bookingForm.addEventListener('submit', (e) => {
         return;
     }
     
+    // Validate phone number
+    if (formData.phone.length !== 11 || !formData.phone.startsWith('7')) {
+        alert('Пожалуйста, введите корректный номер телефона');
+        return;
+    }
+    
+    // Validate name (only letters and spaces)
+    if (!/^[а-яА-ЯёЁa-zA-Z\s-]+$/.test(formData.name)) {
+        alert('Имя должно содержать только буквы');
+        return;
+    }
+    
     console.log('Booking data:', formData);
     
     // Here you would send the data to your backend
+    // Example: fetch('/api/booking', { method: 'POST', body: JSON.stringify(formData) })
+    
     alert('Спасибо за запись! Мы свяжемся с вами в ближайшее время для подтверждения.');
     bookingForm.reset();
     
@@ -268,16 +273,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // SCROLL TO TOP BUTTON
-const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 500) {
-        scrollTopBtn.classList.add('show');
-    } else {
-        scrollTopBtn.classList.remove('show');
-    }
-});
-
 scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
@@ -426,15 +421,50 @@ document.addEventListener('touchend', (e) => {
 
 // OPTIMIZE SCROLL PERFORMANCE
 let ticking = false;
+let lastScrollY = 0;
+
 window.addEventListener('scroll', () => {
+    lastScrollY = window.pageYOffset;
+    
     if (!ticking) {
         window.requestAnimationFrame(() => {
-            // Your scroll code here
+            handleScroll(lastScrollY);
             ticking = false;
         });
         ticking = true;
     }
 }, { passive: true });
+
+function handleScroll(scrollY) {
+    // Header scroll effect
+    if (scrollY > 100) {
+        header.style.padding = '10px 0';
+        header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.1)';
+    } else {
+        header.style.padding = '20px 0';
+        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+    }
+    
+    // Scroll to top button
+    if (scrollY > 500) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+    
+    // Active nav link
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
+        } else {
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('active');
+        }
+    });
+}
 
 // DETECT MOBILE DEVICE
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
